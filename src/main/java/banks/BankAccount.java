@@ -3,6 +3,11 @@ package banks;
 public class BankAccount {
 
     private int balance = 0;
+    private FeeCalculator feeCalculator;
+
+    public BankAccount(FeeCalculator feeCalculator) {
+        this.feeCalculator = feeCalculator;
+    }
 
     public int getBalance() {
         return this.balance;
@@ -16,6 +21,6 @@ public class BankAccount {
         if (this.balance < amount){
             throw new IllegalStateException();
         }
-        this.balance = this.balance - amount - 1;
+        this.balance = this.balance - amount - this.feeCalculator.getFee();
     }
 }
