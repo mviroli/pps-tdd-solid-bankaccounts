@@ -2,20 +2,20 @@ package banks;
 
 public class BankAccount {
 
-    private int balance = 0;
+    private CoreBankAccount base = new CoreBankAccount();
 
     public int getBalance() {
-        return this.balance;
+        return base.getBalance();
     }
 
     public void deposit(int amount) {
-        this.balance = this.balance + amount;
+        base.deposit(amount);
     }
 
     public void withdraw(int amount) {
-        if (this.balance < amount){
+        if (this.getBalance() < amount){
             throw new IllegalStateException();
         }
-        this.balance = this.balance - amount - 1;
+        base.withdraw(amount + 1);
     }
 }
