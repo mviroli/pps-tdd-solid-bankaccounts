@@ -1,16 +1,9 @@
 package banks;
 
-public class BankAccount extends AbstractBankAccount {
+public interface BankAccount {
+    int getBalance();
 
-    @Override
-    protected int getFee() {
-        return 1;
-    }
+    void deposit(int amount);
 
-    @Override
-    protected void checkWithdrawValidity(int amount) {
-        if (this.balance < amount){
-            throw new IllegalStateException();
-        }
-    }
+    void withdraw(int amount);
 }
