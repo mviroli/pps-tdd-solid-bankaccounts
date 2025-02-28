@@ -1,21 +1,16 @@
 package banks;
 
-public class BankAccount {
+public class BankAccount extends AbstractBankAccount {
 
-    private int balance = 0;
-
-    public int getBalance() {
-        return this.balance;
+    @Override
+    protected int getFee() {
+        return 1;
     }
 
-    public void deposit(int amount) {
-        this.balance = this.balance + amount;
-    }
-
-    public void withdraw(int amount) {
+    @Override
+    protected void checkWithdrawValidity(int amount) {
         if (this.balance < amount){
             throw new IllegalStateException();
         }
-        this.balance = this.balance - amount - 1;
     }
 }
